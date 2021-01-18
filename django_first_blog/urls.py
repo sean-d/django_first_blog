@@ -15,7 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from .views import about_page, contact_page, home_page
+from blog.views import (blog_post_create_view, blog_post_delete_view,
+                        blog_post_detail_view, blog_post_list_view, blog_post_update_view)
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path("", home_page),
+    path("blog/", blog_post_list_view),
+    path("blog/<str:slug>/", blog_post_detail_view),
+    path("blog/<str:slug>/edit/", blog_post_update_view),
+    path("blog/<str:slug>/delete/", blog_post_delete_view),
+    path("blog-new/", blog_post_create_view),
+    path("about/", about_page),
+    path("contact/", contact_page),
+    path('muh-admin/', admin.site.urls),
 ]

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block head_title %}
+{{ title }}
+{% endblock head_title %}
+{% block top_div %}
+
+{% if user.is_authenticated %}
+welcome to .... the page {{user}}
+
+{% for item in data %}
+    <li>{{forloop.counter}}: {{item}}</li>
+{% endfor %}
+{% endif %}
+
+{% endblock top_div %}
+
