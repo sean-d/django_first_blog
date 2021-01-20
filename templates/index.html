@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
-{% block head_title %}
+{% block title %}
 {{ title }}
-{% endblock head_title %}
-{% block top_div %}
+{% endblock title %}
+{% block content %}
 
 {% if user.is_authenticated %}
 welcome to .... the page {{user}}
@@ -12,5 +12,5 @@ welcome to .... the page {{user}}
 {% endfor %}
 {% endif %}
 
-{% endblock top_div %}
+{% endblock content %}
 
