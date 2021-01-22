@@ -5,5 +5,10 @@ delete blog
 {% endblock title%}
 
 {% block content %}
-delete blog post
+Are you sure you want to delete: <h1>{{ post.title}}</h1>
+
+<form method = "POST"> 
+{% csrf_token %}
+    <button class="btn btn-danger">NUKE IT</button>
+</form
 {% endblock content %}
