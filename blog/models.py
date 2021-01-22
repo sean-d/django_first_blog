@@ -14,3 +14,12 @@ class BlogPost(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(unique=True)
     content = models.TextField(null=True, blank=True)
+
+    def get_absolute_url(self):
+        return "/blog/{}".format(self.slug)
+
+    def get_edit_url(self):
+        return "{}/edit/".format(self.get_absolute_url())
+
+    def get_delete_url(self):
+        return "{}/delete/".format(self.get_absolute_url())

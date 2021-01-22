@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from django.http import Http404
 from .models import BlogPost
 from .forms import BlogPostModelForm
@@ -54,4 +54,5 @@ def blog_post_delete_view(request, slug):
     context = {"post": post}
     if request.method == "POST":
         post.delete()
+        return redirect("/blog")
     return render(request, template_name, context)

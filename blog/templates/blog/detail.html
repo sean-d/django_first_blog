@@ -5,5 +5,15 @@
 {% endblock title %}
 
 {% block content %}
-{{post.content}}
+<div class="row">
+    {% include "blog/list-inline.html" with blog_post=post truncate=False detail=True%}
+
+    {% if request.user.is_authenticated %}
+    <div class="col-12">
+        {% if request.user.is_staff %}
+            <a href="{{post.get_edit_url}}">Edit Post</a> | <a href="{{post.get_delete_url}}">Delete Post</a>
+        {% endif %}
+    </div>
+    {% endif %}
+</div>
 {% endblock content %}

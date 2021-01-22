@@ -5,7 +5,13 @@ Blog list
 {% endblock title %}
 
 {% block content %}
-    {% for post in  object_list %}
-        <li>{{ post.title }}</li>
-    {% endfor %}
+    <div class="row">
+        {% comment %}
+        pass post object into the template as blog_post
+        with cannot have a space on either side of the =
+        {% endcomment %}
+        {% for post in  object_list %}
+            {% include "blog/list-inline.html" with blog_post=post truncate=True detail=False%}
+        {% endfor %}
+    </div>
 {% endblock content %}
