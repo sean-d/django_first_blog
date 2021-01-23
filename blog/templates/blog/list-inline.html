@@ -1,7 +1,14 @@
 <div class="col-12 col-md-4 mb-4 mx-auto">
-        <div class="card">
+        <div class="card {% if not blog_post.publish_date %} border border-warning text-dark {% endif %} ">
                 <div class="card-body">
                         <h5 class="card-title">{{blog_post.title}}</h5>
+                        <small class="text-muted">
+                        {% if blog_post.publish_date == None %}
+                                UNPUBLISHED
+                        {% else %}
+                                {{blog_post.publish_date}}
+                        {% endif %}
+                        </small>
                         <p class="card-content">
                         {% if truncate %}
                                 {{blog_post.content | linebreaks | truncatewords:30}}
@@ -11,7 +18,8 @@
 
                         </p>
                         {% if not detail %}
-                                <a href="{{blog_post.get_absolute_url}}">onward to blog post...</a>
+                        {% if not blog_post.publish_date %}DRAFT{% endif %}
+                                <a href="{{blog_post.get_absolute_url}}">read more</a>
                         {% endif %}
                 </div>
         </div>

@@ -8,8 +8,12 @@ from .forms import BlogPostModelForm
 
 def blog_post_list_view(request):
     # only the blog posts that return from the model manager from the queryset manager
-    # qs = BlogPost.objects.all().published() # if only using a model manager
+    # qs = BlogPost.objects.all().published()  # if only using a model manager
     qs = BlogPost.objects.published()  # if a queryset mgr was used
+
+    if request.user.is_authenticated:
+        my_qs = BlogPost.objects.filter(user=request.user)
+        qs = (qs | my_qs).distinct()
     template_name = "blog/list.html"
     context = {"object_list": qs}
     return render(request, template_name, context)
