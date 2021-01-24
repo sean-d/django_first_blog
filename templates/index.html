@@ -3,7 +3,6 @@
 {{ title }}
 {% endblock title %}
 {% block content %}
-INDEX
 {% for item in blog_list %}
     {% include "blog/list-inline.html" with blog_post=item truncate=True detail=False%}
 {% endfor %}
