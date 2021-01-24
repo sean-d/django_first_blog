@@ -26,6 +26,7 @@ class BlogPost(models.Model):
     # defaults to first user, when a user is deleted, the user gets set to NULL then defaults to user id 1.
     user = models.ForeignKey(user, default=1, null=True,
                              on_delete=models.SET_NULL)
+    image = models.ImageField(upload_to="images/", blank=True, null=True)
     title = models.CharField(max_length=200)
     slug = models.SlugField(unique=True)
     content = models.TextField(null=True, blank=True)

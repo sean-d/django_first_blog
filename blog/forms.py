@@ -11,7 +11,7 @@ class BlogPostForm(forms.Form):
 class BlogPostModelForm(forms.ModelForm):
     class Meta:
         model = BlogPost
-        fields = ["title", "slug", "content", "publish_date"]
+        fields = ["title", "slug", "image", "content", "publish_date"]
 
     def clean_title(self, *args, **kwargs):
         # if blog post is new, instance is None. Otherwise, it's the title of the post as per __str__

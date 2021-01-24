@@ -16,6 +16,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
@@ -119,3 +120,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# simulating having a cdn so files will be added locally and "uploaded" to the cdn
+CDN_PATH = os.path.join(BASE_DIR, "simulated_cdn")
+STATIC_ROOT = os.path.join(CDN_PATH, "static")
+LOCAL_STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATICFILES_DIRS = [LOCAL_STATIC_ROOT, ]
+MEDIA_ROOT = os.path.join(CDN_PATH, "media")
+MEDIA_URL = '/media/'
