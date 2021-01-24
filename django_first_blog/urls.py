@@ -18,11 +18,13 @@ from django.urls import path, include
 from django.conf import settings  # needed for the test server static/media hosting
 from .views import about_page, contact_page, home_page
 from blog.views import blog_post_create_view
+from searching.views import search_view
 
 urlpatterns = [
     path("", home_page),
     path("blog/", include("blog.urls")),
     path("blog-new/", blog_post_create_view),
+    path("search/", search_view),
     path("about/", about_page),
     path("contact/", contact_page),
     path('muh-admin/', admin.site.urls),
